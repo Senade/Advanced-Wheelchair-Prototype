@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+      <head>
+          <title>Heart Rate</title>
+
+            <script type="text/javascript" src="/js/smoothie.js"></script>
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="/js/jquery.js"></script>
+            <script src="/js/jquery.flot.js"></script>
+            <script src='/js/heartrate.js'></script>
+
+            <script type="text/javascript">
+                  var socket = io(),
+                        bpm = new TimeSeries();
+
+                  socket.emit('heartrate_ack');
+
+                  function createTimeline() {
+                        var smoothie = new SmoothieChart({grid:{fillStyle:'transparent',strokeStyle:'transparent',borderVisible:false},labels:{disabled:true}});
+                        smoothie.addTimeSeries(bpm, {lineWidth: 2})
+                        smoothie.streamTo(document.getElementById("graph"), 1000);
+                  }     
+
+                  socket.on('plot', function(data) {
+                        setInterval(function() {
+                              bpm.append(new Date().getTime(), data);
+                        }, 1000);   
+                  });                                                
+            </script>
+
+            <link rel='stylesheet' href='/css/heartrate.css'></link>
+      </head>
+      <body onload = "createTimeline()">
+            <!--<div id='placeholder' style='width: 300px; height: 300px'></div>-->
+            <canvas id="graph" width="1200" height="500"></canvas>
+            <div id='heartrate_container'><span class='heart'>&hearts;</span><span id='heartrate'>0</span></div>
+      </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Nakul R Camasamudram",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*",
+    "johnny-five": "*",
+    "leapjs": "*",
+    "smoothie": "*",
+    "socket.io": "*",
+    "temporal": "^0.4.0"
+  }
+}
