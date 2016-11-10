@@ -14,4 +14,4 @@ As a solution to such a problem, I propose an Advanced Wheelchair concept with t
 
 -	**_Chat Application:_** This feature allows the guardian the wheelchair user to send messages to each other without accessing other messaging applications.
 
-  ###I will add more details and documentation shortly!
+
